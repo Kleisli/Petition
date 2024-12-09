@@ -1,0 +1,25 @@
+Kleisli.Petition.Backend.PetitionController.index = afx`
+
+
+        <legend>Petitionen</legend>
+
+        <div class="neos-content neos-fluid-container neos-indented">
+            <div class="neos-row-fluid">
+                <div class="neos-span5">
+                    <table @if.condition={petitions} class="neos-table">
+                        <Neos.Fusion:Loop items={petitions} itemName="petition">
+                            <tr>
+                                <td>
+                                    <Neos.Fusion:Link.Action href.controller="Backend\\Signature" href.action="index" href.arguments={{parent: petition.identifier}} >
+                                        <i class="fas fa-file-signature"></i> {petition.properties.title}
+                                    </Neos.Fusion:Link.Action>
+                                </td>
+                            </tr>
+                        </Neos.Fusion:Loop>
+                    </table>
+                </div>
+            </div>
+        </div>
+    `
+
+

@@ -1,0 +1,27 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Kleisli.Petition: true
+
+    modules:
+      management:
+        submodules:
+          petition:
+            label: 'Petitions'
+            controller: Kleisli\Petition\Controller\Backend\PetitionController
+            description: ''
+            icon: 'fas fa-file-signature'
+            additionalResources:
+              styleSheets:
+                - 'resource://Milly.CrudUI/Public/Css/neosBackend.css'
+  Flow:
+    mvc:
+      routes:
+        'Neos.Flow':
+          position: 'end'
+
+
+  Fusion:
+    defaultContext:
+      'Kleisli.Petition': Kleisli\Petition\Eel\Helper\SignatureHelper

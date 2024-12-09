@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Kleisli.Petition" source-language="de" datatype="plaintext">
+		<body>
+			<trans-unit id="sign" xml:space="preserve">
+				<source>Unterzeichnen</source>
+			</trans-unit>
+            <trans-unit id="signatures" xml:space="preserve">
+				<source>Unterschriften</source>
+			</trans-unit>
+            <trans-unit id="dataprotection">
+                <source><![CDATA[
+                    Mit Deiner Eingabe akzeptierst Du die Bestimmungen zum <a href="{dataprotectionUri}" target="_blank">Datenschutz</a> von Der Gewerbeverein.
+                ]]></source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

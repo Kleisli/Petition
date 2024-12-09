@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="Model/Signature" source-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="firstName">
+                <source>Vorname</source>
+            </trans-unit>
+            <trans-unit id="lastName">
+                <source>Nachname</source>
+            </trans-unit>
+            <trans-unit id="email">
+                <source>E-Mail-Adresse</source>
+            </trans-unit>
+            <trans-unit id="company">
+                <source>Unternehmen</source>
+            </trans-unit>
+            <trans-unit id="motivation">
+                <source>Meine Beweggründe</source>
+            </trans-unit>
+            <trans-unit id="public">
+                <source>Meine Unterschrift und Beweggründe öffentlich anzeigen.</source>
+            </trans-unit>
+            <trans-unit id="news">
+                <source>Ich möchte über die Tätigkeiten von Der Gewerbeverein informiert werden.</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

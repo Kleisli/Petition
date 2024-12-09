@@ -1,0 +1,26 @@
+privilegeTargets:
+
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'Kleisli.Petition:signPetition':
+      matcher: 'method(Kleisli\Petition\Controller\PetitionController->.*Action())'
+    'Kleisli.Petition:allModuleMethods':
+      matcher: 'method(Kleisli\Petition\Controller\.*Controller->.*Action())'
+
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    'Kleisli.Petition:BackendModule':
+      matcher: 'management/petition'
+
+
+roles:
+  'Kleisli.Petition:Admin':
+    label: "Access to petition signatures in Backend"
+    privileges:
+      - privilegeTarget: 'Kleisli.Petition:BackendModule'
+        permission: GRANT
+      - privilegeTarget: 'Kleisli.Petition:allModuleMethods'
+        permission: GRANT
+
+  'Neos.Flow:Everybody':
+    privileges:
+      - privilegeTarget: 'Kleisli.Petition:signPetition'
+        permission: GRANT

@@ -1,0 +1,51 @@
+#
+# Definition of NodeType Kleisli.Petition:Content.SignatureForm
+#
+# @see https://docs.neos.io/cms/manual/content-repository/nodetype-definition
+# @see https://docs.neos.io/cms/manual/content-repository/nodetype-properties
+#
+'Kleisli.Petition:Content.SignatureForm':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Gewerbeverein.Site:Mixin.InspectorGeneral': true
+  ui:
+    label: Petitions-Formular
+    inspector:
+      groups:
+        default:
+          tab: default
+          icon: file-alt
+          label: default
+    icon: file-alt
+  childNodes:
+    signed:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          'Gewerbeverein.Site:Constraint.Content.Restricted': false
+    verified:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          'Gewerbeverein.Site:Constraint.Content.Restricted': false
+  properties:
+    mailText:
+      type: string
+      ui:
+        label: Mail-Text
+        inspector:
+          group: 'general'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            rows: 7
+    dataprotectionInfo:
+      type: reference
+      ui:
+        label: Datenschutz-Seite
+        reloadPageIfChanged: true
+        inspector:
+          group: general
+          editorOptions:
+            nodeTypes:
+              - 'Gewerbeverein.Site:Document.AbstractPage'
+

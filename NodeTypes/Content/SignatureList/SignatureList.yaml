@@ -1,0 +1,19 @@
+#
+# Definition of NodeType Kleisli.Petition:Content.SignatureForm
+#
+# @see https://docs.neos.io/cms/manual/content-repository/nodetype-definition
+# @see https://docs.neos.io/cms/manual/content-repository/nodetype-properties
+#
+'Kleisli.Petition:Content.SignatureList':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Gewerbeverein.Site:Mixin.InspectorGeneral': true
+  ui:
+    label: Unterschriften-Liste
+    inspector:
+      groups:
+        default:
+          tab: default
+          icon: file-alt
+          label: default
+    icon: file-alt

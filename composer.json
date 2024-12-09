@@ -1,0 +1,22 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "kleisli/petition",
+    "require": {
+        "neos/flow": "*",
+        "kleisli/milly-crudui": "@dev",
+        "sitegeist/neos-symfonymailer": "^1.1",
+        "websupply/route-annotation": "^0.0.3",
+        "kleisli/sharingbuttons": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kleisli\\Petition\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Kleisli.Petition"
+        }
+    }
+}

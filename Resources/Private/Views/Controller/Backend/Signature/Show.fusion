@@ -1,0 +1,19 @@
+Kleisli.Petition.Backend.SignatureController.show = afx`
+    <legend>
+        <Milly.CrudUI:Component.Label.ObjectLabel object={object} showClassLabel={'one'} />
+    </legend>
+    <div class="neos-content neos-fluid-container neos-indented">
+        <div class="neos-row-fluid">
+            <div class="neos-span6">
+                <Milly.CrudUI:Component.ShowProperties object={object} />
+            </div>
+
+            <div class="neos-span6">
+                <Milly.CrudUI:Component.ShowRelations object={object}  />
+            </div>
+        </div>
+    </div>
+`
+Kleisli.Petition.Backend.SignatureController.show.@context {
+    millyCrudTheme = ${this.millyCrudTheme ? this.millyCrudTheme : (millyCrudTheme ? millyCrudTheme : Configuration.setting('Milly.CrudUI.defaultTheme'))}
+}

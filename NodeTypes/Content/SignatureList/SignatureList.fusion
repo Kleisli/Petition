@@ -1,0 +1,28 @@
+prototype(Kleisli.Petition:Content.SignatureList) < prototype(Neos.Neos:ContentComponent) {
+
+    renderer = afx`
+        <h2>{Kleisli.Petition.numberOfSignaturesForPetition(documentNode)} {I18n.translate('Kleisli.Petition:Main:signatures')}</h2>
+        <Neos.Fusion:Loop items={Kleisli.Petition.signaturesForPetition(documentNode)}>
+            <div class="callout secondary">
+                <strong>
+                    <Neos.Fusion:Fragment @if={item.company}>
+                        {item.company},&nbsp;
+                    </Neos.Fusion:Fragment>
+                    {item.firstName} {item.lastName}
+                </strong>
+                <p>{String.nl2br(item.motivation)}</p>
+            </div>
+        </Neos.Fusion:Loop>
+    `
+
+    @cache {
+        mode = 'uncached'
+        context {
+            0 = 'node'
+            1 = 'documentNode'
+        }
+    }
+
+
+
+}

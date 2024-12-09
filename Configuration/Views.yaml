@@ -1,0 +1,6 @@
+-
+  requestFilter: 'isPackage("Kleisli.Petition")'
+  viewObjectName: 'Neos\Fusion\View\FusionView'
+  options:
+    fusionPathPatterns:
+      - 'resource://Kleisli.Petition/Private/Views'

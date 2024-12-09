@@ -1,0 +1,21 @@
+
+Kleisli.Petition.Backend.SignatureController.index = afx`
+
+    <legend>
+        Unterzeichnende für "{Array.first(objects).petitionNode.properties.title}"
+    </legend>
+
+    <p>{Array.length(objects)} Unterzeichnende</p>
+    <p>{numberOfVerified} Verifizierte</p>
+
+    <div class="neos-content neos-fluid-container neos-indented">
+        <div class="neos-row-fluid">
+            <div class="neos-span12">
+                <Milly.CrudUI:Component.IndexTable objects={objects} modelClassName={CrudUIModelClass} />
+            </div>
+        </div>
+    </div>
+        `
+Kleisli.Petition.Backend.SignatureController.index.@context {
+    millyCrudTheme = ${this.millyCrudTheme ? this.millyCrudTheme : (millyCrudTheme ? millyCrudTheme : Configuration.setting('Milly.CrudUI.defaultTheme'))}
+}

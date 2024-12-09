@@ -1,0 +1,9 @@
+prototype(Milly.CrudUI:Component.PropertyEditors) {
+
+    renderer {
+        email = Neos.Fusion.Form:Textfield {
+            attributes.type = "email"
+            attributes.required = true
+        }
+    }
+}

@@ -1,0 +1,30 @@
+Milly:
+  CrudUI:
+    entities:
+      Kleisli\Petition\Domain\Model\Signature:
+        label:
+          one: Unterschrift
+          many: Unterschriften
+        properties:
+          firstName: []
+          lastName: []
+          email:
+            type: email
+          company: []
+          motivation:
+            type: textarea
+          public:
+            type: booleanCheckbox
+          news:
+            type: booleanCheckbox
+          signedAt:
+            type: dateTime
+          verifiedAt:
+            type: dateTime
+          token: []
+        views:
+          new:
+            properties: [email, firstName, lastName, company, motivation, public, news]
+          index:
+            properties: [ 'firstName', 'lastName', 'email', 'company', 'signedAt', 'verifiedAt', public, news]
+            showColumnHeaders: true

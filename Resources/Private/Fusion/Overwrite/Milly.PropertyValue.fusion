@@ -1,0 +1,10 @@
+prototype(Milly.CrudUI:Component.PropertyDisplayer) {
+
+    renderer {
+        email = Neos.Fusion:Tag {
+            tagName = 'a'
+            attributes.href = ${'mailto:'+Milly.Object.getProperty(object, propertyName)}
+            content = ${Milly.Object.getProperty(object, propertyName)}
+        }
+    }
+}

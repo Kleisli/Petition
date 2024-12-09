@@ -1,0 +1,106 @@
+#
+# Renderer for NodeType Kleisli.Petition:Content.SignatureForm
+#
+# @see https://docs.neos.io/cms/manual/rendering
+#
+prototype(Kleisli.Petition:Content.SignatureForm) < prototype(Neos.Neos:ContentComponent) {
+
+    @context.CrudUIModelClass = "Kleisli\\Petition\\Domain\\Model\\Signature"
+
+    preset = Neos.Fusion:DataStructure {
+        petitionNodeIdentifier = ${documentNode.identifier}
+    }
+    configuration = ${Milly.CrudUI.getConfigurationByModel(CrudUIModelClass, null, 'new')}
+    i18nArguments = Neos.Fusion:DataStructure {
+        dataprotectionUri = Neos.Neos:NodeUri {
+            node = ${node.properties.dataprotectionInfo}
+        }
+    }
+
+    renderer = Neos.Fusion:Join {
+        form = Neos.Fusion:Match {
+            @subject = ${request.arguments.action}
+            @default = afx`
+                <Neos.Fusion.Form:Form form.target.package="Kleisli.Petition"
+                                       form.target.controller="Petition"
+                                       form.target.action="sign">
+                    <div class="neos-control-group">
+                        <Neos.Fusion:Loop items={props.preset}>
+                            <Neos.Fusion.Form:Hidden field.name={"object["+itemKey+"]"} attributes.value={item}/>
+                            <Neos.Fusion.Form:Hidden field.name={"language"} attributes.value={Array.first(node.context.dimensions.language)}/>
+                        </Neos.Fusion:Loop>
+                        <Neos.Fusion.Form:Hidden @if.hasParent={props.parent} field.name="object[parent]" attributes.value={props.parent}/>
+                        <Milly.CrudUI:Component.PropertyEditors properties={props.configuration.properties} />
+                    </div>
+                    <p>
+                        {I18n.translate('dataprotection', null, props.i18nArguments, 'Main', 'Kleisli.Petition')}
+                    </p>
+                    <div class="neos-pull-right">
+                        <Neos.Fusion.Form:Button attributes.class="neos-button neos-button-primary">
+                            {I18n.translate('Kleisli.Petition:Main:sign')}
+                        </Neos.Fusion.Form:Button>
+                    </div>
+                </Neos.Fusion.Form:Form>
+            `
+            signed = Neos.Neos:ContentCollection{
+                attributes.id="petition"
+                attributes.class="callout primary large"
+                nodePath = 'signed'
+            }
+            verified =  Neos.Fusion:Tag {
+                attributes.id = "petition"
+                attributes.class = "callout primary"
+
+                content = Neos.Fusion:Join {
+                    content = Neos.Neos:ContentCollection {
+                        nodePath = 'verified'
+                    }
+                    buttons = afx`
+                        <Kleisli.SharingButtons:Component.LinkedinButton />
+                        <Kleisli.SharingButtons:Component.EmailButton />
+                        <Kleisli.SharingButtons:Component.FacebookButton />
+                        <Kleisli.SharingButtons:Component.TwitterButton/>
+                    `
+                }
+            }
+        }
+
+        backend = Neos.Fusion:Join {
+            @if.inBackend = ${node.context.inBackend}
+            signed = Neos.Neos:ContentCollection {
+                nodePath = 'signed'
+                @process.wrap = afx`
+                    <b>Was nach dem Unterzeichnen angezeigt wird:</b>
+                    <div class="callout primary large">
+                        {value}
+                    </div>
+                `
+            }
+            verified = Neos.Neos:ContentCollection {
+                nodePath = 'verified'
+                @process.wrap = afx`
+                    <b>Was nach dem Verifizieren angezeigt wird:</b>
+                    <div class="callout primary large">
+                        {value}
+                        <Kleisli.SharingButtons:Component.LinkedinButton />
+                        <Kleisli.SharingButtons:Component.EmailButton />
+                        <Kleisli.SharingButtons:Component.FacebookButton />
+                        <Kleisli.SharingButtons:Component.TwitterButton/>
+                    </div>
+
+                `
+            }
+        }
+    }
+
+    @cache {
+        mode = 'uncached'
+        context {
+            0 = 'node'
+            1 = 'documentNode'
+        }
+    }
+
+
+
+}
